@@ -76,13 +76,13 @@ public class SlaveMode {
             kepler.setSlaveMode();
 
             // Overall duration in seconds for extrapolation
-            double duration = 600.;
+            double duration = 30.;
 
             // Stop date
             final AbsoluteDate finalDate = initialDate.shiftedBy(duration);
 
             // Step duration in seconds
-            double stepT = 60.;
+            double stepT = 1.;
 
             // Extrapolation loop
             int cpt = 1;
@@ -91,9 +91,7 @@ public class SlaveMode {
                  extrapDate = extrapDate.shiftedBy(stepT))  {
 
                 SpacecraftState currentState = kepler.propagate(extrapDate);
-                System.out.println("step " + cpt++);
-                System.out.println(" time : " + currentState.getDate());
-                System.out.println(" " + currentState.getOrbit());
+                System.out.println("step " + cpt++ + " time : " + currentState.getDate() + " orbit: " + currentState.getOrbit() + " state: " + currentState.getOrbit().getPVCoordinates().getPosition().toString());
 
             }
 
